@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import RegisterScreen from './components/RegisterScreen'
+import { RegisterScreen } from './components/RegisterScreen'
 // import HomeScreen from './components/HomeScreen'
 import Dashboard from './components/Dashboard'
 import Transacciones from './components/Transacciones'

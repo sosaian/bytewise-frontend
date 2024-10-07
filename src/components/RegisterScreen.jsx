@@ -1,10 +1,11 @@
-function RegisterScreen() {
+import { Link } from 'react-router-dom'
+
+export function RegisterScreen() {
     return (
         <div className="register-container">
            {/* <h1>Registrarse</h1>*/}
       
-           
-           <p>¿Tienes una cuenta? <a href="/login">¡Inicia sesión aquí!</a></p>
+           <p>¿Tienes una cuenta? <Link to="/login">¡Inicia sesión aquí!</Link></p>
 
            <br/> <br/>
 
@@ -16,18 +17,16 @@ function RegisterScreen() {
                 <button type="submit" className="submit-btn">Si! Me quiero registrar en ByteWise</button>
             </form>
           
-            <div className="social-login">
+            {/* <div className="social-login">
                 <p>...o a través de</p>
                 <button className="social-btn facebook-btn">Facebook</button>
                 <button className="social-btn google-btn">Google</button>
                 <button className="social-btn apple-btn">Apple</button>
-            </div>
+            </div> */}
 
             <footer>
-                <p>Al usar ByteWise, aceptas los <a href="/terms">Términos de uso</a>, <a href="/privacy">Política de privacidad</a> y <a href="/precontractual">Términos precontractuales</a> de nuestra empresa.</p>
+                <p>Al usar ByteWise, aceptas los <Link to="/terms">Términos de uso</Link>, <Link to href="/privacy">Política de privacidad</Link> y <Link to="/precontractual">Términos precontractuales</Link> de nuestra empresa.</p>
             </footer>
         </div>
-    );
+    )
 }
-
-  export default RegisterScreen
