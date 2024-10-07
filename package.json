@@ -14,7 +14,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
-    "recharts": "^x.x.x"
+    "recharts": "^x.x.x",
+    "sweetalert2": "^11.14.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
