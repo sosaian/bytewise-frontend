@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5rem solid #f2f2f2;
+}
+
+header > nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 1fr));
+    gap: 1rem;
+}
+
+header > nav > a {
+    color: var(--clr-secondary);
+    height: 3rem;
+    min-width: 6rem;
+    display: grid;
+    place-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+header > nav > a:first-child {
+    font-weight: bolder;
+}
+    
+header > nav > a:not(:first-child):not(.active):hover {
+    outline: 0.1rem solid var(--clr-accent);
+}
+    
+header > nav > a:visited {
+    color: var(--clr-secondary);
+}
+
+header > nav > a.active {
+    outline: 0.1rem solid #f2f2f2;
+}
+
+header > :last-child {
+    margin-left: 1rem;
+}

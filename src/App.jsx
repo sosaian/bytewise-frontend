@@ -4,7 +4,8 @@ import RegisterScreen from './components/RegisterScreen'
 import Dashboard from './components/Dashboard'
 import Transacciones from './components/Transacciones'
 import TareasHabitos from './components/TareasHabitos'
-import logo from '../public/assets/img/color-bw-03.svg'
+import { NavBar } from './components/NavBar/NavBar'
+// import logo from '/assets/img/color-bw-03.svg'
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 import './App.css'
 
@@ -16,7 +17,8 @@ function App() {
         <>
             <BrowserRouter>
                 <header>
-                    <img src={logo} alt="Logo" className="logo" />
+                    {/* <img src={logo} alt="Logo" className="logo" /> */}
+                    <NavBar/>
                 </header>
                 <main>
                     <Routes>
@@ -30,8 +32,8 @@ function App() {
 
                         {/* Secciones disponibles desde HomeScreen */}
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/transacciones" element={<Transacciones />} />
-                        <Route path="/tareas" element={<TareasHabitos />} />
+                        <Route path="/transactions" element={<Transacciones />} />
+                        <Route path="/tasks" element={<TareasHabitos />} />
 
                         {/* Página que no existe */}
                         <Route path="*" element={<h2>{ERROR_MESSAGE}</h2>} />
