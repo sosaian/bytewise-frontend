@@ -4,7 +4,7 @@ import RegisterScreen from './components/RegisterScreen'
 import Dashboard from './components/Dashboard'
 import Transacciones from './components/Transacciones'
 import TareasHabitos from './components/TareasHabitos'
-import logo from './img/color-bw-03.svg'
+import logo from '../public/assets/img/color-bw-03.svg'
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 import './App.css'
 
@@ -20,21 +20,21 @@ function App() {
                 </header>
                 <main>
                     <Routes>
-                    {/* Página principal cuando el usuario está logueado */}
-                    {/* <Route path="/" element={<HomeScreen user={{ name: "Pao" }} />} /> */}
-                    <Route path="/" element={<Navigate to="/login" />}/>
+                        {/* Página principal cuando el usuario está logueado */}
+                        {/* <Route path="/" element={<HomeScreen user={{ name: "Pao" }} />} /> */}
+                        <Route path="/" element={<Navigate to="/register" />}/>
 
-                    {/* Página de registro y autenticación */}
-                    <Route path="/register" element={<RegisterScreen />} />
-                    <Route path="/login" element={<h2>{WIP_MESSAGE}</h2>} />
+                        {/* Página de registro y autenticación */}
+                        <Route path="/register" element={<RegisterScreen />} />
+                        <Route path="/login" element={<h2>{WIP_MESSAGE}</h2>} />
 
-                    {/* Secciones disponibles desde HomeScreen */}
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/transacciones" element={<Transacciones />} />
-                    <Route path="/tareas-habitos" element={<TareasHabitos />} />
+                        {/* Secciones disponibles desde HomeScreen */}
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/transacciones" element={<Transacciones />} />
+                        <Route path="/tareas" element={<TareasHabitos />} />
 
-                    {/* Página que no existe */}
-                    <Route path="*" element={<h2>{ERROR_MESSAGE}</h2>} />
+                        {/* Página que no existe */}
+                        <Route path="*" element={<h2>{ERROR_MESSAGE}</h2>} />
                     </Routes>
                 </main>
                 <footer>
