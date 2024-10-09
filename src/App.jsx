@@ -5,7 +5,8 @@ import Dashboard from './components/Dashboard'
 import Transacciones from './components/Transacciones'
 import TareasHabitos from './components/TareasHabitos'
 import { NavBar } from './components/NavBar/NavBar'
- import logo from '/assets/img/color-bw-03.svg'
+import { LoginFormContainer } from './components/LoginFormContainer/LoginFormContainer'
+// import logo from '/assets/img/color-bw-03.svg'
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 import './App.css'
 
@@ -28,7 +29,7 @@ function App() {
 
                         {/* Página de registro y autenticación */}
                         <Route path="/register" element={<RegisterScreen />} />
-                        <Route path="/login" element={<h2>{WIP_MESSAGE}</h2>} />
+                        <Route path="/login" element={<LoginFormContainer />} />
 
                         {/* Secciones disponibles desde HomeScreen */}
                         <Route path="/dashboard" element={<Dashboard />} />
