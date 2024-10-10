@@ -35,6 +35,10 @@ function App() {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/transactions" element={<Transacciones />} />
                         <Route path="/tasks" element={<TareasHabitos />} />
+                        
+                        {/* Perfil del usuario y configuraciones */}
+                        <Route path="/profile" element={<h2>{WIP_MESSAGE}</h2>} />
+                        <Route path="/settings" element={<h2>{WIP_MESSAGE}</h2>} />
 
                         {/* Página que no existe */}
                         <Route path="*" element={<h2>{ERROR_MESSAGE}</h2>} />
