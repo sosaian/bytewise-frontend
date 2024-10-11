@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { LoginComponentContext } from './context/LoginContext.jsx'
 import { RegisterScreen } from './components/RegisterScreen'
 // import HomeScreen from './components/HomeScreen'
 import Dashboard from './components/Dashboard'
@@ -15,7 +16,7 @@ function App() {
     const ERROR_MESSAGE = "¡UPS! Esa página no existe..."
 
     return (
-        <>
+        <LoginComponentContext>
             <BrowserRouter>
                 <header>
                     {/* <img src={logo} alt="Logo" className="logo" /> */}
@@ -48,7 +49,7 @@ function App() {
                     CILSA | Bootcamp Fullstack | Proyecto final
                 </footer>
             </BrowserRouter>
-        </>
+        </LoginComponentContext>
     )
 }
 
