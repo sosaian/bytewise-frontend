@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { LoginContext } from '../context/LoginContext'
+import { useLoginRedirect } from '../hooks/useLoginRedirect'
 
 function Transacciones() {
+    const { login } = useContext(LoginContext)
+    useLoginRedirect(login)
+
     // Estado inicial con algunas transacciones de ejemplo
     const [transacciones, setTransacciones] = useState([
         { id: 1, tipo: 'gasto', descripcion: 'Pago de alquiler', monto: -500, fecha: '2024-10-07' },
