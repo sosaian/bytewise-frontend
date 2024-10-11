@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
+import { LoginContext } from '../../context/LoginContext'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import logo from '/assets/img/color-bw-03.svg'
@@ -7,6 +8,7 @@ import './LoginFormContainer.css'
 export function LoginFormContainer() {
     const navigateTo = useNavigate()
     const FORM_REF = useRef(null)
+    const { setLogin } = useContext(LoginContext)
 
     const validateEmail = (email) => {
         /*
@@ -71,7 +73,12 @@ export function LoginFormContainer() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log((data.id && data.name) ? "Login successful" : "Login failed")
+            if (data.name) {
+                setLogin({ name: data.name })
+                console.log("Login successful")
+            } else {
+                console.log("Login failed")
+            }
         })
         .then(() => {
             setLoginInProcess(false)
