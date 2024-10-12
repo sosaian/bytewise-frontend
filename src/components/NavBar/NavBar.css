@@ -30,7 +30,7 @@ header > nav > a:not(:first-child):not(.active):hover {
 }
     
 header > nav > a:visited {
-    color: var(--clr-secondary);
+    color: var(--clr-primary);
 }
 
 header > nav > a.active {
