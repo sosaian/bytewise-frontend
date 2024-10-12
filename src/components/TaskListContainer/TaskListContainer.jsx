@@ -4,6 +4,7 @@ import './TaskListContainer.css'
 
 export function TaskListContainer() {
     const [tasks, setTasks] = useState([])
+    const [newChange, setNewChange] = useState(false)
 
     useEffect(() => {
         fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
@@ -15,7 +16,7 @@ export function TaskListContainer() {
             setTasks(data)
         })
         .catch(err => console.error(err))
-    },[])
+    },[newChange])
 
     const translateStatus = (status_task) => {
         switch (status_task) {
@@ -75,7 +76,7 @@ export function TaskListContainer() {
                 title: "Todo ta bien",
                 html: `Task creada exitosamente.`,
                 icon: "success"
-            })
+            }).then(() => setNewChange(true))
         })
         .catch(error => console.error(error))
     }
