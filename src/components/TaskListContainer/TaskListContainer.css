@@ -78,12 +78,19 @@
     background-color: #ddd;
 }
 
-.task-table tbody tr:last-child :first-child {
+.task-table tbody > tr:last-child > :first-child {
     border-radius: 0 0 0 1rem;
 }
 
-.task-table tbody tr:last-child :last-child {
+.task-table tbody > tr:last-child > :last-child {
     border-radius: 0 0 1rem 0;
+}
+
+.taskListButton {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
 }
 
 /* Status-based row styling */

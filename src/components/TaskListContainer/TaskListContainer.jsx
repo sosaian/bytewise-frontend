@@ -168,7 +168,104 @@ export function TaskListContainer() {
         })
     }
 
+    const editTask = (ID, NEW_TASK) => {
+        fetch((import.meta.env.VITE_TASK_URL + "/" + ID), {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(NEW_TASK),
+            credentials: 'include'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log((data.message) ? "Task update successful" : "Task update failed")
+        })
+        .then(() => {            
+            Swal.fire({
+            title: "Todo ta bien",
+            html: `Task actualizada exitosamente.`,
+            icon: "success"
+            }).then(() => manualTaskListFetch())
+        })
+        .catch(error => console.error(error))
+    }
 
+    const handleEditTaskFormSubmit = (id, original_description, original_status, original_due_date) => {
+        const DESCRIPTION = document.getElementById("editTaskFormDescription").value.trim()
+        const STATUS = document.getElementById("editTaskFormStatus").value
+        const DUE_DATE = document.getElementById("editTaskFormDueDate").value
+
+        if (DESCRIPTION === "") {
+            Swal.fire({
+                title: "Error al crear tarea",
+                text: "El nombre o descripción de la tarea no es válida, por favor vuelva a intentarlo.",
+                icon: "error"
+            })
+
+            return
+        }
+
+        if (STATUS === "") {
+            Swal.fire({
+                title: "Error al crear tarea",
+                text: "Es necesario elegir algún estado actual para la tarea, por favor vuelva a intentarlo.",
+                icon: "error"
+            })
+
+            return
+        }
+
+        if (DUE_DATE === "") {
+            Swal.fire({
+                title: "Error al crear tarea",
+                text: "Es necesario tener alguna fecha límite para la tarea, por favor vuelva a intentarlo.",
+                icon: "error"
+            })
+
+            return
+        }
+
+        const NEW_TASK = {
+            ...(DESCRIPTION !== original_description && { description_task: DESCRIPTION }),
+            ...(STATUS !== original_status && { status_task: STATUS }),
+            ...(DUE_DATE !== original_due_date && { due_date: DUE_DATE })
+        }
+
+        editTask(id, NEW_TASK)
+    }
+
+    const createEditTaskForm = (id, description, status, due_date) => {
+        Swal.fire({
+            title: 'Editar tarea',
+            html: `
+                <div>
+                    <label for="editTaskFormDescription" class="swal2-input">Nombre o descripción de la tarea</label>
+                    <input id="editTaskFormDescription" class="swal2-input" type="text" value="" required />
+                </div>
+                <div>
+                    <label for="editTaskFormStatus">Estado de la tarea</label>
+                    <select id="editTaskFormStatus" class="swal2-input" required>
+                        <option value="" disabled selected>Seleccionar estado</option>
+                        <option value="not_started">Pendiente</option>
+                        <option value="in_progress">En progreso</option>
+                        <option value="complete">Terminada</option>
+                        <option value="overdue">Atrasada</option>
+                        <option value="canceled">Cancelada</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="editTaskFormDueDate">Fecha límite</label>
+                    <input id="editTaskFormDueDate" type="date" class="swal2-input" required />
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonText: "Actualizar Tarea",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) handleEditTaskFormSubmit(id, description, status, due_date)
+        })
+    }
 
     return (
         <div className="task-list-container">
@@ -194,8 +291,12 @@ export function TaskListContainer() {
                         <td>{task.description_task}</td>
                         <td className={`estado ${task.status_task.replace(' ', '-')}`}>{translateStatus(task.status_task)}</td>
                         <td>{formatDate(task.due_date)}</td>
-                        <td><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></td>
-                        <td><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></td>
+                        <td>
+                            <button className="taskListButton" onClick={() => { createEditTaskForm(task.id, task.description_task, task.status_task, task.due_date) }}><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></button>
+                        </td>
+                        <td>
+                            <button className="taskListButton"><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
+                        </td>
                     </tr>
                 ))}
                 </tbody>
