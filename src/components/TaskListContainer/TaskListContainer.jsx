@@ -4,7 +4,6 @@ import './TaskListContainer.css'
 
 export function TaskListContainer() {
     const [tasks, setTasks] = useState([])
-    const [newChange, setNewChange] = useState(false)
 
     useEffect(() => {
         fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
@@ -16,7 +15,19 @@ export function TaskListContainer() {
             setTasks(data)
         })
         .catch(err => console.error(err))
-    },[newChange])
+    },[])
+
+    const manualTaskListFetch = () => {
+        fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
+            method: 'GET',
+            credentials: 'include'
+        })
+        .then(res => res.json())
+        .then(data => {
+            setTasks(data)
+        })
+        .catch(err => console.error(err))
+    }
 
     const translateStatus = (status_task) => {
         switch (status_task) {
@@ -76,7 +87,7 @@ export function TaskListContainer() {
                 title: "Todo ta bien",
                 html: `Task creada exitosamente.`,
                 icon: "success"
-            }).then(() => setNewChange(true))
+            }).then(() => manualTaskListFetch())
         })
         .catch(error => console.error(error))
     }
@@ -156,6 +167,8 @@ export function TaskListContainer() {
             if (result.isConfirmed) handleNewTaskFormSubmit()
         })
     }
+
+
 
     return (
         <div className="task-list-container">
