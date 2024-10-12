@@ -1,0 +1,88 @@
+/* Style for the container */
+.task-list-container {
+    display: grid;
+    place-items: center;
+}
+
+/* Style for the table */
+.task-table {
+    width: 80vw;
+    margin-top: 20px;
+}
+
+.task-table thead > tr {
+    height: 3rem;
+}
+
+/* Table header styles */
+.task-table th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.task-table th:first-child {
+    border-radius: 1rem 0 0 0;
+}
+
+.task-table th:last-child {
+    border-radius: 0 1rem 0 0;
+}
+
+.task-table tbody > tr {
+    height: 3rem;
+}
+
+/* Table row and cell styles */
+.task-table td {
+    padding: 0 1rem;
+    border: 1px solid black;
+    vertical-align: middle;
+}
+
+.task-table td:not(:nth-child(2)) {
+    text-align: center;
+}
+
+/* Alternating row colors */
+.task-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.task-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on rows */
+.task-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.task-table tbody tr:last-child :first-child {
+    border-radius: 0 0 0 1rem;
+}
+
+.task-table tbody tr:last-child :last-child {
+    border-radius: 0 0 1rem 0;
+}
+
+/* Status-based row styling */
+.estado.canceled {
+    color: red;
+}
+
+.estado.complete {
+    color: green;
+}
+
+.estado.in_progress {
+    color: orange;
+}
+
+.estado.overdue {
+    color: orangered;
+}
+  
