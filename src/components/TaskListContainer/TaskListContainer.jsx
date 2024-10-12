@@ -81,7 +81,7 @@ export function TaskListContainer() {
         .catch(error => console.error(error))
     }
     
-    const handleSubmit = () => {
+    const handleNewTaskFormSubmit = () => {
         const DESCRIPTION = document.getElementById("taskFormDescription").value.trim()
         const STATUS = document.getElementById("taskFormStatus").value
         const DUE_DATE = document.getElementById("taskFormDueDate").value
@@ -153,7 +153,7 @@ export function TaskListContainer() {
             confirmButtonText: "Crear Tarea",
             cancelButtonText: "Cancelar"
         }).then((result) => {
-            if (result.isConfirmed) handleSubmit()
+            if (result.isConfirmed) handleNewTaskFormSubmit()
         })
     }
 
