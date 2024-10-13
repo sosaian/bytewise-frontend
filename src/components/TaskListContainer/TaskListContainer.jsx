@@ -136,7 +136,7 @@ export function TaskListContainer() {
         createTask(NEW_TASK)
     }
 
-    const createTaskForm = () => {
+    const createNewTaskForm = () => {
         Swal.fire({
             title: 'Crear nueva tarea',
             html: `
@@ -287,7 +287,7 @@ export function TaskListContainer() {
         <div className="task-list-container">
             <div>
                 <h2>Tareas del usuario</h2>
-                <button onClick={createTaskForm}><img src="./assets/icon/icon_add.svg" alt="Add icon"/> Nueva tarea</button>
+                <button onClick={createNewTaskForm}><img src="./assets/icon/icon_add.svg" alt="Add icon"/> Nueva tarea</button>
             </div>
 
             <table className="task-table">
