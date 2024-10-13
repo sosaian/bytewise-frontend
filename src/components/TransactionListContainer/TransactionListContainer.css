@@ -1,0 +1,132 @@
+/* Style for the container */
+.transaction-list-container {
+    display: grid;
+    place-items: center;
+}
+
+.transaction-list-container > div {
+    padding: 0 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction-list-container > div > button {
+    height: 3rem;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Style for the table */
+.transaction-table {
+    width: 80vw;
+    margin-top: 20px;
+}
+
+.transaction-table thead > tr {
+    height: 3rem;
+}
+
+/* Table header styles */
+.transaction-table th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.transaction-table th:first-child {
+    border-radius: 1rem 0 0 0;
+}
+
+.transaction-table th:last-child {
+    border-radius: 0 1rem 0 0;
+}
+
+.transaction-table tbody > tr {
+    height: 3rem;
+}
+
+/* Table row and cell styles */
+.transaction-table td {
+    padding: 0 1rem;
+    border: 1px solid black;
+    vertical-align: middle;
+}
+
+.transaction-table td:not(:nth-child(2)) {
+    text-align: center;
+}
+
+/* Alternating row colors */
+.transaction-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on rows */
+.transaction-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.transaction-table tbody > tr:last-child > :first-child {
+    border-radius: 0 0 0 1rem;
+}
+
+.transaction-table tbody > tr:last-child > :last-child {
+    border-radius: 0 0 1rem 0;
+}
+
+.transactionListButton {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+/* Type-based row styling */
+.type.expense {
+    color: red;
+}
+
+.type.income {
+    color: green;
+}
+
+.type.save {
+    color: blue;
+}
+
+#swal2-html-container {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#swal2-html-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#swal2-html-container > div > label {
+    display: grid;
+    place-items: center;
+}
+
+#swal2-html-container > div .swal2-input {
+    margin: 0;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: #4CAF50;
+}
