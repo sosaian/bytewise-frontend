@@ -1,20 +1,31 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { LoginContext } from '../../context/LoginContext'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './TransactionListContainer.css'
 
 export function TransactionListContainer() {
     const [transactions, setTransactions] = useState([])
+    const { login, checkLogin } = useContext(LoginContext)
+    const navigateTo = useNavigate()
+
+    const fetchData = async () => {
+        try {
+            const transactionsResponse = await fetch((import.meta.env.VITE_TRANSACTION_GET_ALL_URL), {
+                method: 'GET',
+                credentials: 'include'
+            })
+
+            const transactionsData = await transactionsResponse.json()
+
+            setTransactions(transactionsData)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     useEffect(() => {
-        fetch((import.meta.env.VITE_TRANSACTION_GET_ALL_URL), {
-            method: 'GET',
-            credentials: 'include'
-        })
-        .then(res => res.json())
-        .then(data => {
-            setTransactions(data)
-        })
-        .catch(err => console.error(err))
+        checkLogin().then(() => login.valid ? fetchData : navigateTo('/login'))
     },[])
 
     const manualTransactionListFetch = () => {
@@ -280,6 +291,13 @@ export function TransactionListContainer() {
             }
         })
     }
+
+    if (!login.valid)
+        return (
+            <>
+                <h1>¡UPS! No puedes acceder a esta página...</h1>
+            </>
+        )
 
     return (
         <div className="transaction-list-container">
