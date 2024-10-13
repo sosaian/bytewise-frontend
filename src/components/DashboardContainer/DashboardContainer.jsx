@@ -4,6 +4,7 @@ import { LoginContext } from '../../context/LoginContext'
 export function DashboardContainer() {
     const { login } = useContext(LoginContext)
     const [tasks, setTasks] = useState([])
+    const [budgetSummary, setBudgetSummary] = useState({})
 
     useEffect(() => {
         fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
@@ -13,6 +14,17 @@ export function DashboardContainer() {
         .then(res => res.json())
         .then(data => {
             setTasks(data)
+        })
+        .catch(err => console.error(err))
+
+        // Fetch Budget summary from user
+        fetch((import.meta.env.VITE_BUDGET_SUMMARY_URL), {
+            method: 'GET',
+            credentials: 'include'
+        })
+        .then(res => res.json())
+        .then(data => {
+            setBudgetSummary(data)
         })
         .catch(err => console.error(err))
     },[])
@@ -60,6 +72,12 @@ export function DashboardContainer() {
     return (
         <>
             <h1>{"👋🏿 Hola, " + login.name}</h1>
+            <section>
+                <h2>Resumen del registro de transacciones</h2>
+                <h3>{"Total de ingresos: $" + parseFloat(budgetSummary.total_income).toFixed(2)}</h3>
+                <h3>{"Total de egresos:  $" + parseFloat(budgetSummary.total_expense).toFixed(2)}</h3>
+                <h3>{"Total de ahorros:  $" + parseFloat(budgetSummary.total_savings).toFixed(2)}</h3>
+            </section>
             <section>
                 <h2>Tareas no finalizadas</h2>
                 <table className="task-table">
