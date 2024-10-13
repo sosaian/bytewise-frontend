@@ -267,6 +267,33 @@ export function TaskListContainer() {
         })
     }
 
+    const handleDeleteTask = (ID) => {
+        Swal.fire({
+            title: "Eliminar tarea",
+            text: "Estás por eliminar esta tarea ... ¿Continuar?",
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: "Eliminar tarea",
+            denyButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch((import.meta.env.VITE_TASK_URL + "/" + ID), {
+                    method: 'DELETE',
+                    credentials: 'include'
+                })
+                .then(res => res.json())
+                .then(() => {
+                    Swal.fire({
+                    title: "Eliminar tarea",
+                    html: `¡Tarea eliminada exitosamente!`,
+                    icon: "success"
+                    }).then(() => manualTaskListFetch())
+                })
+                .catch(error => console.error(error))
+            }
+        })
+    }
+
     return (
         <div className="task-list-container">
             <div>
@@ -295,7 +322,7 @@ export function TaskListContainer() {
                             <button className="taskListButton" onClick={() => { createEditTaskForm(task.id, task.description_task, task.status_task, task.due_date) }}><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></button>
                         </td>
                         <td>
-                            <button className="taskListButton"><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
+                            <button className="taskListButton" onClick={() => { handleDeleteTask(task.id) }}><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
                         </td>
                     </tr>
                 ))}
