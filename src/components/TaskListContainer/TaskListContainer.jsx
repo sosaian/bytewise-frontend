@@ -196,30 +196,14 @@ export function TaskListContainer() {
         const STATUS = document.getElementById("editTaskFormStatus").value
         const DUE_DATE = document.getElementById("editTaskFormDueDate").value
 
-        if (DESCRIPTION === "") {
+        const UNCHANGED_DESCRIPTION = DESCRIPTION === original_description
+        const UNCHANGED_STATUS = STATUS === original_status
+        const UNCHANGED_DATE = DUE_DATE === new Date(original_due_date).toISOString().split('T')[0]
+
+        if (UNCHANGED_DESCRIPTION && UNCHANGED_STATUS && UNCHANGED_DATE) {
             Swal.fire({
-                title: "Error al crear tarea",
-                text: "El nombre o descripción de la tarea no es válida, por favor vuelva a intentarlo.",
-                icon: "error"
-            })
-
-            return
-        }
-
-        if (STATUS === "") {
-            Swal.fire({
-                title: "Error al crear tarea",
-                text: "Es necesario elegir algún estado actual para la tarea, por favor vuelva a intentarlo.",
-                icon: "error"
-            })
-
-            return
-        }
-
-        if (DUE_DATE === "") {
-            Swal.fire({
-                title: "Error al crear tarea",
-                text: "Es necesario tener alguna fecha límite para la tarea, por favor vuelva a intentarlo.",
+                title: "Error al actualizar tarea",
+                text: "No se ha detectado ningún cambio en los valores, vuelva a intentarlo.",
                 icon: "error"
             })
 
@@ -265,6 +249,11 @@ export function TaskListContainer() {
         }).then((result) => {
             if (result.isConfirmed) handleEditTaskFormSubmit(id, description, status, due_date)
         })
+
+        //  After creating the modal, update the actual values of this task.
+        document.getElementById("editTaskFormDescription").value = description
+        document.getElementById("editTaskFormStatus").value = status
+        document.getElementById("editTaskFormDueDate").value = new Date(due_date).toISOString().split('T')[0]
     }
 
     const handleDeleteTask = (ID) => {
