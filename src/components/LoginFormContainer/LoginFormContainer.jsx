@@ -74,7 +74,7 @@ export function LoginFormContainer() {
         .then(res => res.json())
         .then(data => {
             if (data.name) {
-                setLogin({ name: data.name })
+                setLogin({ valid: true, name: data.name })
                 console.log("Login successful")
             } else {
                 console.log("Login failed")

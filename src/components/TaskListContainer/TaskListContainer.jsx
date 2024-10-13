@@ -25,7 +25,7 @@ export function TaskListContainer() {
     }
 
     useEffect(() => {
-        checkLogin().then(() => login.valid ? fetchData : navigateTo('/login'))
+        checkLogin().then(() => login.valid ? fetchData() : navigateTo('/login'))
     },[])
 
     const manualTaskListFetch = () => {

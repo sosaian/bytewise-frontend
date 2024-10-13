@@ -32,7 +32,7 @@ export function DashboardContainer() {
     }
 
     useEffect(() => {
-        checkLogin().then(() => login.valid ? fetchData : navigateTo('/login'))
+        checkLogin().then(() => login.valid ? fetchData() : navigateTo('/login'))
     }, [])
 
     const translateStatus = (status_task) => {
