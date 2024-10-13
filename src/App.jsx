@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginComponentContext } from './context/LoginContext.jsx'
 import { RegisterScreen } from './components/RegisterScreen'
 // import HomeScreen from './components/HomeScreen'
-import Dashboard from './components/Dashboard'
+import { DashboardContainer } from './components/DashboardContainer/DashboardContainer.jsx'
 import { TaskListContainer } from './components/TaskListContainer/TaskListContainer.jsx'
 import { TransactionListContainer } from './components/TransactionListContainer/TransactionListContainer.jsx'
 import { NavBar } from './components/NavBar/NavBar'
@@ -33,7 +33,7 @@ function App() {
                         <Route path="/login" element={<LoginFormContainer />} />
 
                         {/* Secciones disponibles desde HomeScreen */}
-                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<DashboardContainer />} />
                         <Route path="/transactions" element={<TransactionListContainer />} />
                         <Route path="/tasks" element={<TaskListContainer />} />
                         
