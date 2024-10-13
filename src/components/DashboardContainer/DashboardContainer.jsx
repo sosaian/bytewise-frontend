@@ -1,10 +1,12 @@
 import { useEffect, useState, useContext } from 'react'
 import { LoginContext } from '../../context/LoginContext'
+import { useNavigate } from 'react-router-dom'
 
 export function DashboardContainer() {
-    const { login } = useContext(LoginContext)
+    const { login, checkLogin } = useContext(LoginContext)
     const [tasks, setTasks] = useState([])
     const [budgetSummary, setBudgetSummary] = useState({})
+    const navigateTo = useNavigate()
 
     const fetchData = async () => {
         try {
@@ -29,7 +31,9 @@ export function DashboardContainer() {
         }
     }
 
-    useEffect(() => fetchData, [])
+    useEffect(() => {
+        checkLogin().then(() => login.valid ? fetchData : navigateTo('/login'))
+    }, [])
 
     const translateStatus = (status_task) => {
         switch (status_task) {
@@ -70,6 +74,13 @@ export function DashboardContainer() {
         // Format the date as `DD-MMM-YYYY`
         return `${day}-${month}-${year}`
     }
+
+    if (!login.valid)
+        return (
+            <>
+                <h1>¡UPS! No puedes acceder a esta página...</h1>
+            </>
+        )
 
     return (
         <>
