@@ -3,8 +3,8 @@ import { LoginComponentContext } from './context/LoginContext.jsx'
 import { RegisterScreen } from './components/RegisterScreen'
 // import HomeScreen from './components/HomeScreen'
 import Dashboard from './components/Dashboard'
-import Transacciones from './components/Transacciones'
 import { TaskListContainer } from './components/TaskListContainer/TaskListContainer.jsx'
+import { TransactionListContainer } from './components/TransactionListContainer/TransactionListContainer.jsx'
 import { NavBar } from './components/NavBar/NavBar'
 import { LoginFormContainer } from './components/LoginFormContainer/LoginFormContainer'
 // import logo from '/assets/img/color-bw-03.svg'
@@ -34,7 +34,7 @@ function App() {
 
                         {/* Secciones disponibles desde HomeScreen */}
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/transactions" element={<Transacciones />} />
+                        <Route path="/transactions" element={<TransactionListContainer />} />
                         <Route path="/tasks" element={<TaskListContainer />} />
                         
                         {/* Perfil del usuario y configuraciones */}
