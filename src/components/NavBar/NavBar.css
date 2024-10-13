@@ -12,7 +12,7 @@ header > nav {
 }
 
 header > nav > a {
-    color: var(--clr-secondary);
+    color: var(--clr-primary);
     height: 3rem;
     min-width: 6rem;
     display: grid;
@@ -34,7 +34,7 @@ header > nav > a:visited {
 }
 
 header > nav > a.active {
-    outline: 0.1rem solid #f2f2f2;
+    outline: 0.1rem solid var(--clr-primary);
 }
 
 header > :last-child {
