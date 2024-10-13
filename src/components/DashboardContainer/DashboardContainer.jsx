@@ -6,28 +6,30 @@ export function DashboardContainer() {
     const [tasks, setTasks] = useState([])
     const [budgetSummary, setBudgetSummary] = useState({})
 
-    useEffect(() => {
-        fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
-            method: 'GET',
-            credentials: 'include'
-        })
-        .then(res => res.json())
-        .then(data => {
-            setTasks(data)
-        })
-        .catch(err => console.error(err))
+    const fetchData = async () => {
+        try {
+            const [tasksResponse, budgetResponse] = await Promise.all([
+                fetch(import.meta.env.VITE_TASK_GET_ALL_URL, {
+                    method: 'GET',
+                    credentials: 'include'
+                }),
+                fetch(import.meta.env.VITE_BUDGET_SUMMARY_URL, {
+                    method: 'GET',
+                    credentials: 'include'
+                })
+            ])
 
-        // Fetch Budget summary from user
-        fetch((import.meta.env.VITE_BUDGET_SUMMARY_URL), {
-            method: 'GET',
-            credentials: 'include'
-        })
-        .then(res => res.json())
-        .then(data => {
-            setBudgetSummary(data)
-        })
-        .catch(err => console.error(err))
-    },[])
+            const tasksData = await tasksResponse.json()
+            const budgetData = await budgetResponse.json()
+
+            setTasks(tasksData)
+            setBudgetSummary(budgetData)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => fetchData, [])
 
     const translateStatus = (status_task) => {
         switch (status_task) {
