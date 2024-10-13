@@ -1,20 +1,31 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { LoginContext } from '../../context/LoginContext'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './TaskListContainer.css'
 
 export function TaskListContainer() {
+    const { login, checkLogin } = useContext(LoginContext)
     const [tasks, setTasks] = useState([])
+    const navigateTo = useNavigate()
+
+    const fetchData = async () => {
+        try {
+            const tasksResponse = await fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
+                method: 'GET',
+                credentials: 'include'
+            })
+
+            const tasksData = await tasksResponse.json()
+
+            setTasks(tasksData)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     useEffect(() => {
-        fetch((import.meta.env.VITE_TASK_GET_ALL_URL), {
-            method: 'GET',
-            credentials: 'include'
-        })
-        .then(res => res.json())
-        .then(data => {
-            setTasks(data)
-        })
-        .catch(err => console.error(err))
+        checkLogin().then(() => login.valid ? fetchData : navigateTo('/login'))
     },[])
 
     const manualTaskListFetch = () => {
@@ -282,6 +293,13 @@ export function TaskListContainer() {
             }
         })
     }
+
+    if (!login.valid)
+        return (
+            <>
+                <h1>¡UPS! No puedes acceder a esta página...</h1>
+            </>
+        )
 
     return (
         <div className="task-list-container">
