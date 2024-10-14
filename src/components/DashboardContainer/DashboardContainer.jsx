@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react'
 import { LoginContext } from '../../context/LoginContext'
 import { useNavigate } from 'react-router-dom'
+import './DashboardContainer.css'
 
 export function DashboardContainer() {
     const { login, checkLogin } = useContext(LoginContext)

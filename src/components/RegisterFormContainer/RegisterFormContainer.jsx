@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import Swal from 'sweetalert2'
+import './RegisterFormContainer.css'
 
 export function RegisterFormContainer() {
     const navigateTo = useNavigate()

@@ -1,0 +1,9 @@
+.dashboard-container {
+    padding: 20px;
+    text-align: center; /* Centra el texto dentro del contenedor */
+  }
+  
+  /* Secciones dentro del Dashboard */
+  section {
+    margin-bottom: 40px; /* Espacio entre secciones */
+  }
