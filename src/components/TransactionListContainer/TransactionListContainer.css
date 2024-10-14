@@ -1,3 +1,11 @@
+:root {
+    --clr-accent-dark: #4CAF50;
+    --clr-deny: #dc3741;
+    --clr-row-odd: #f9f9f9;
+    --clr-row-even: #f2f2f2;
+    --clr-row-hover: #ddd;
+}
+
 /* Style for the container */
 .transaction-list-container {
     display: grid;
@@ -33,8 +41,8 @@
 
 /* Table header styles */
 .transaction-table th {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--clr-accent-dark);
+    color: var(--clr-secondary);
     padding: 10px;
     text-align: left;
     text-align: center;
@@ -66,16 +74,16 @@
 
 /* Alternating row colors */
 .transaction-table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: var(--clr-row-odd);
 }
 
 .transaction-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: var(--clr-row-even);
 }
 
 /* Hover effect on rows */
 .transaction-table tbody tr:hover {
-    background-color: #ddd;
+    background-color: var(--clr-row-hover);
 }
 
 .transaction-table tbody > tr:last-child > :first-child {
@@ -86,20 +94,25 @@
     border-radius: 0 0 1rem 0;
 }
 
-.transactionListButton {
+.transactionEditListButton,
+.transactionDeleteListButton {
     height: 100%;
     width: 100%;
     display: grid;
     place-items: center;
 }
 
+.transactionDeleteListButton {
+    background-color: var(--clr-deny);
+}
+
 /* Type-based row styling */
 .type.expense {
-    color: red;
+    color: var(--clr-deny);
 }
 
 .type.income {
-    color: green;
+    color: var(--clr-accent-dark);
 }
 
 .type.save {
@@ -128,5 +141,5 @@
 }
 
 div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
-    background-color: #4CAF50;
+    background-color: var(--clr-accent-dark);
 }

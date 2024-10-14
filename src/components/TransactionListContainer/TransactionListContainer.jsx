@@ -326,10 +326,10 @@ export function TransactionListContainer() {
                         <td>{"$" + parseFloat(transaction.amount).toFixed(2)}</td>
                         <td>{transaction.description_transaction}</td>
                         <td>
-                            <button className="transactionListButton" onClick={() => { createEditTransactionForm(transaction.id, transaction.description_transaction, transaction.type_transaction, transaction.amount) }}><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></button>
+                            <button className="transactionEditListButton" onClick={() => { createEditTransactionForm(transaction.id, transaction.description_transaction, transaction.type_transaction, transaction.amount) }}><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></button>
                         </td>
                         <td>
-                            <button className="transactionListButton" onClick={() => { handleDeleteTransaction(transaction.id) }}><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
+                            <button className="transactionDeleteListButton" onClick={() => { handleDeleteTransaction(transaction.id) }}><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
                         </td>
                     </tr>
                 ))}
