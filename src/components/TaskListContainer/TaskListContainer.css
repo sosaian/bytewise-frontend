@@ -1,3 +1,11 @@
+:root {
+    --clr-accent-dark: #4CAF50;
+    --clr-deny: #dc3741;
+    --clr-row-odd: #f9f9f9;
+    --clr-row-even: #f2f2f2;
+    --clr-row-hover: #ddd;
+}
+
 /* Style for the container */
 .task-list-container {
     display: grid;
@@ -33,8 +41,8 @@
 
 /* Table header styles */
 .task-table th {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--clr-accent-dark);
+    color: var(--clr-secondary);
     padding: 10px;
     text-align: left;
     text-align: center;
@@ -66,16 +74,16 @@
 
 /* Alternating row colors */
 .task-table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: var(--clr-row-odd);
 }
 
 .task-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: var(--clr-row-even);
 }
 
 /* Hover effect on rows */
 .task-table tbody tr:hover {
-    background-color: #ddd;
+    background-color: var(--clr-row-hover);
 }
 
 .task-table tbody > tr:last-child > :first-child {
@@ -86,20 +94,25 @@
     border-radius: 0 0 1rem 0;
 }
 
-.taskListButton {
+.taskListEditButton,
+.taskListDeleteButton {
     height: 100%;
     width: 100%;
     display: grid;
     place-items: center;
 }
 
+.taskListDeleteButton {
+    background-color: var(--clr-deny);
+}
+
 /* Status-based row styling */
 .estado.canceled {
-    color: red;
+    color: var(--clr-deny);
 }
 
 .estado.complete {
-    color: green;
+    color: var(--clr-accent-dark);
 }
 
 .estado.in_progress {
@@ -132,5 +145,6 @@
 }
 
 div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
-    background-color: #4CAF50;
+    /* background-color: var(--clr-accent); */
+    background-color: var(--clr-accent-dark);
 }

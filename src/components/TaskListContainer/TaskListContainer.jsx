@@ -326,10 +326,10 @@ export function TaskListContainer() {
                         <td className={`estado ${task.status_task.replace(' ', '-')}`}>{translateStatus(task.status_task)}</td>
                         <td>{formatDate(task.due_date)}</td>
                         <td>
-                            <button className="taskListButton" onClick={() => { createEditTaskForm(task.id, task.description_task, task.status_task, task.due_date) }}><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></button>
+                            <button className="taskListEditButton" onClick={() => { createEditTaskForm(task.id, task.description_task, task.status_task, task.due_date) }}><img src="./assets/icon/icon_edit.svg" alt="Edit icon"/></button>
                         </td>
                         <td>
-                            <button className="taskListButton" onClick={() => { handleDeleteTask(task.id) }}><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
+                            <button className="taskListDeleteButton" onClick={() => { handleDeleteTask(task.id) }}><img src="./assets/icon/icon_delete.svg" alt="Delete icon"/></button>
                         </td>
                     </tr>
                 ))}
