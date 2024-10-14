@@ -1,0 +1,15 @@
+#logoutButton {
+    height: 3rem;
+    background-color: var(--clr-accent);
+    border-radius: 0.5rem;
+    border: none;
+    position: relative;
+}
+
+
+#logoutButton:focus,
+#logoutButton:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-secondary);
+    cursor: pointer;
+}
