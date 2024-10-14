@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 export const LoginContext = createContext()
 
@@ -7,13 +7,13 @@ export const LoginComponentContext = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            const response = await fetch(import.meta.env.VITE_TASK_GET_ALL_URL, {
+            const response = await fetch(import.meta.env.VITE_AUTH_CHECK_URL, {
                 method: 'GET',
                 credentials: 'include'
             })
 
             const responseData = await response.json()
-            
+
             if (responseData.name) {
                 setLogin({ valid: true, name: responseData.name })
                 return true
@@ -29,6 +29,8 @@ export const LoginComponentContext = ({ children }) => {
     const clearLogin = () => {
         setLogin({})
     }
+
+    useEffect(() => { checkLogin() }, [])
 
     return (
         <LoginContext.Provider value={ { login, setLogin, checkLogin, clearLogin } }>
