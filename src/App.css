@@ -111,18 +111,18 @@ li {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--clr-secondary);
 }
 
 button {
   padding: 8px 12px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--clr-accent);
+  color: var(--clr-primary);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: var(--clr-accent);
 }
