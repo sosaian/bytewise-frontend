@@ -34,7 +34,7 @@ export function LogoutButton(){
                     setLogoutInProcess(false)
                     
                     Swal.fire({
-                    title: "CIERRE DE SESIÓN EXISTOSO!",
+                    title: "CIERRE DE SESIÓN EXITOSO!",
                     html: `¡Nos vemos la próxima!`,
                     icon: "success"
                     }).then(() => {
