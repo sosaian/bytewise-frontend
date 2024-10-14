@@ -105,11 +105,11 @@ export function RegisterScreen() {
         <div className="register-container">
             {/* <h1>Registrarse</h1>*/}
         
-            <p>¿Tienes una cuenta? <Link to="/login">¡Inicia sesión aquí!</Link></p>
+            
 
-            <br/> <br/>
-
-            <h3>Sino te invitamos a registrarte:</h3>
+            
+            
+            <h1>¡Registrate en ByteWise!</h1>
             
             <form className="register-form" id="registerForm" ref={FORM_REF} onSubmit={handleSubmit}>
                 <input id="registerFormName" type="text" placeholder="Nombre" required />
@@ -117,8 +117,10 @@ export function RegisterScreen() {
                 <input id="registerFormEmailConfirmation" type="email" placeholder="Confirmar correo electrónico" required />
                 <input id="registerFormPassword" type="password" placeholder="Contraseña" required />
                 <input id="registerFormPasswordConfirmation" type="password" placeholder="Confirmar contraseña" required />
-                <button type="registerFormSubmit" className="submit-btn">{registerInProcess ? "AGUARDA UNOS INSTANTES": "Si! Me quiero registrar en ByteWise"}</button>
+                <button type="registerFormSubmit" className="submit-btn">{registerInProcess ? "AGUARDA UNOS INSTANTES": "Registrarse en ByteWise"}</button>
             </form>
+            <br/> <br/>
+            <p>¿Tienes una cuenta? <Link to="/login">¡Inicia sesión aquí!</Link></p>
             
             {/* Actualmente deshabilitado hasta lograr implementar oAuth en el backend... */}
             {/* <div className="social-login">
