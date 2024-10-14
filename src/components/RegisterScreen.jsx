@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 export function RegisterScreen() {
     const navigateTo = useNavigate()
     const FORM_REF = useRef(null)
+    const [registerInProcess, setRegisterInProcess] = useState(false)
 
     const validateEmail = (email) => {
         /*
@@ -91,10 +92,14 @@ export function RegisterScreen() {
             html: `¡Bienvenido a BiteWise! Su cuenta ha sido creada. Inicie sesión para comenzar a disfrutar de nuestros servicios.`,
             icon: "success"
         }).then(() => navigateTo('/login')))
-        .catch(error => console.error(error))
+        .catch(error => {
+            Swal.fire({
+            title: "Error al registrarte",
+            html: `No pudimos procesar la solicitud en nuestros servidores. Por favor intente de nuevo.`,
+            icon: "error"
+            }).then(() => setRegisterInProcess(false))
+        })
     }
-    
-    const [registerInProcess, setRegisterInProcess] = useState(false)
 
     return (
         <div className="register-container">
