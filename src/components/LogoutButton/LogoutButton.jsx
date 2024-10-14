@@ -48,8 +48,8 @@ export function LogoutButton(){
     }
     return (
         <>
-            <button onClick={handleLogout}>
-                {logoutInProcess ? "AGUARDA UNOS INSTANTES": "👋🏿 Cerrar Sesión"}
+            <button id="logoutButton" onClick={handleLogout}>
+                {logoutInProcess ? "AGUARDA UNOS INSTANTES": "👋🏻 Cerrar Sesión"}
             </button>
         </>
     )
