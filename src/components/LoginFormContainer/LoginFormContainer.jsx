@@ -85,7 +85,7 @@ export function LoginFormContainer() {
             setLoginInProcess(false)
             
             Swal.fire({
-            title: "INICIO DE SESIÓN EXISTOSO!",
+            title: "INICIO DE SESIÓN EXITOSO!",
             html: `¡Bienvenido a BiteWise!`,
             icon: "success"
             }).then(() => navigateTo('/dashboard'))
