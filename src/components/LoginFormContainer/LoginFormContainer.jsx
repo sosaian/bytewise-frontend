@@ -9,6 +9,7 @@ export function LoginFormContainer() {
     const navigateTo = useNavigate()
     const FORM_REF = useRef(null)
     const { setLogin } = useContext(LoginContext)
+    const [loginInProcess, setLoginInProcess] = useState(false)
 
     const validateEmail = (email) => {
         /*
@@ -89,10 +90,14 @@ export function LoginFormContainer() {
             icon: "success"
             }).then(() => navigateTo('/dashboard'))
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            Swal.fire({
+            title: "Error al iniciar sesión",
+            html: `Las credenciales no son válidas. Vuelva a intentarlo.`,
+            icon: "error"
+            }).then(() => setLoginInProcess(false)).then(console.error(error))
+        })
     }
-
-    const [loginInProcess, setLoginInProcess] = useState(false)
 
     return (
         <>
