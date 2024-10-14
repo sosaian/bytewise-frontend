@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginComponentContext } from './context/LoginContext.jsx'
-import { RegisterScreen } from './components/RegisterScreen'
+import { RegisterFormContainer } from './components/RegisterFormContainer/RegisterFormContainer.jsx'
 import { DashboardContainer } from './components/DashboardContainer/DashboardContainer.jsx'
 import { TaskListContainer } from './components/TaskListContainer/TaskListContainer.jsx'
 import { TransactionListContainer } from './components/TransactionListContainer/TransactionListContainer.jsx'
@@ -24,7 +24,7 @@ function App() {
                         <Route path='/' element={<Navigate to='/register' />}/>
 
                         {/* Página de registro y autenticación */}
-                        <Route path='/register' element={<RegisterScreen />} />
+                        <Route path='/register' element={<RegisterFormContainer />} />
                         <Route path='/login' element={<LoginFormContainer />} />
 
                         {/* Secciones disponibles desde HomeScreen */}

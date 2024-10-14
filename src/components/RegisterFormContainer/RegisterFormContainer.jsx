@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import Swal from 'sweetalert2'
 
-export function RegisterScreen() {
+export function RegisterFormContainer() {
     const navigateTo = useNavigate()
     const FORM_REF = useRef(null)
     const [registerInProcess, setRegisterInProcess] = useState(false)
