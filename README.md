@@ -1,6 +1,7 @@
 # ByteWise - Frontend
-
 CILSA | Bootcamp Fullstack | Proyecto final
+
+![](https://github.com/user-attachments/assets/9c2860cd-5282-460f-8e6e-856d4a08309d)
 
 ## Información del proyecto
 
@@ -24,6 +25,13 @@ ByteWise es una aplicación de “Gestión Financiera Personal” que te permite
 * Paola Fraticola ([@dgpaofraticola](https://github.com/dgpaofraticola))
 * Ian Sosa ([@sosaian](https://github.com/sosaian))
 * Evelin Suarez ([@evelinnn19](https://github.com/evelinnn19))
+
+## ¿Qué aprendimos en este proyecto?
+
+* Metodologías ágiles de trabajo - SCRUM
+* React JS (Vite)
+* Manejo de variables de entorno - dotenv
+* Consumo de API mediante fetch() con el [proyecto backend de ByteWise](https://github.com/sosaian/bytewise-backend)
 
 ## Instalación del repositorio de manera local
 
@@ -170,3 +178,11 @@ Para que el proyecto se logre realizar de una manera esperada utilicé las sigui
 📚 Recharts (`npm install recharts`)
 
 📚 SweetAlert 2 (`npm install sweetalert2`)
+
+## Algunas capturas de pantalla
+
+![](https://github.com/user-attachments/assets/54742af8-0fd5-4a47-9276-70f6cb51120e)
+
+![](https://github.com/user-attachments/assets/71c67344-663c-407a-8c53-97f349be0cec)
+
+![](https://github.com/user-attachments/assets/9a1bc5a4-96df-40e4-baa9-37a83230057d)
